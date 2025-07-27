@@ -4,7 +4,7 @@ Add following to build.zig.zon (Hash will change, in order to get the correct ha
 
 ```zig
 .dependencies = .{
-    .ZigFiber = .{ .url = "https://github.com/KcanCurly/ZigFiber/archive/refs/tags/0.0.1-alpha.zip", .hash = "zigfiber-A.B.C-HASH" },
+    .ZigFiber = .{ .url = "https://github.com/KcanCurly/ZigFiber/archive/refs/tags/X.X.X.zip", .hash = "zigfiber-A.B.C-HASH" },
     }
 ```
 
@@ -19,7 +19,11 @@ exe_mod.addImport("zigfiber", fiber_mod);
 Add following to main.zig
 
 ```zig
-runFiber(pAddress, false);
+const fiber = @import("zigfiber");
+
+var pAddress: ?*anyopaque = null;
+... (set your payload to pAddress here)
+try fiber.runFiber(pAddress.?, true);
 ```
 
 # Credits
